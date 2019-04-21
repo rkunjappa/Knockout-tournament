@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <!-- <div id="participatingTeams">
+    <h3>Participating Teams</h3>
+    <div class="card w-25" *ngFor="let team of teamList">
+      <div class="card-header text-center">{{team.abbreviation}}</div>
+      <div class="card-body">
+        <p class="mtb-0">{{team.teamName}}</p>
+        <p class="mtb-0">{{team.simpleName}}</p>
+        <p class="mtb-0">{{team.location}}</p>
+      </div>
+    </div>
+  </div> -->
+  <div class="jumbotron">
+    <h2 class="card-text text-center">Knockout Tournament</h2>
+    <br />
+    <div class="card-deck">
+      <div class="mx-3" *ngFor="let round of matchArray ;let j=index">
+        <p class="card-text text-center"
+          *ngIf="((matchArray.length-3) != j) && ((matchArray.length-2)!= j )&& ((matchArray.length-1)!= j  ) ">Round
+          {{j+1}}</p>
+        <p class="card-text text-center" *ngIf="(matchArray.length-3) == j">Semi Finals</p>
+        <p class="card-text text-center" *ngIf="(matchArray.length-2) == j">Finals</p>
+        <p class="card-text text-center" *ngIf="(matchArray.length-1) == j">Winning Team</p>
+        <div *ngFor="let teams of round;let i = index">
+          <div class="row">
+            <div class="col-12">
+              <h5>{{teams.simpleName}}</h5> 
+              <p class="my-0 small">{{teams.teamName}}
+              </p>
+              <p class="my-0 small">{{teams.location}} - <span class="badge badge-success">{{teams.abbreviation}}</span></p>
+            </div>
+          </div>
+          <div class="row" *ngIf="i%2==0 && (round.length-1)/i != 1 && round.length != 1">
+            <div class="offset-5 col-5" style="height: 30px;border-top: solid;border-bottom: solid;border-right: solid">
+            </div>
+          </div>
+          <div class="row" *ngIf="i%2==0 && (round.length-1)/i == 1 && round.length != 1">
+            <div class="offset-5 col-5" style="border-top: solid;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
